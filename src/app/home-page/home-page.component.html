@@ -1,0 +1,16 @@
+<div class="fullPage" (click)="fullPage()">
+    <div *ngIf="iniStauts==false" class="iniCenter">{{initext}}</div>
+    <div *ngIf="iniStauts">
+        <div class="center">
+            <button mat-raised-button *ngIf="finalStatus==false" class="finalDesignButton" (click)="finalDesign()">Final Design</button>
+            <button mat-raised-button *ngIf="finalStatus==false" class="resetButton" (click)="reset()">Reset</button>
+            <button mat-raised-button *ngIf="finalStatus" class="finalDesignButton" (click)="backToDesign()">Back to Design</button>
+        </div>
+        <div class="solarEditDesignContainer" *ngFor="let item of rowCountValue let i=index" >
+                <div class="solardata" *ngFor="let item of coloumCountValue  let j=index">
+                    <div  [ngClass]="(finalStatus)?'solarFinalDesignCell':'solarEditDesignCell'"  (click)="solarEditDesign(i,j)" [ngStyle]=" (([i,j]|solarSquareDesignData:coloumValue)?.length)?{'background-color': 'grey'} : {'background-color': 'white'}"></div>
+                </div>
+        </div>
+    </div>
+</div>
+
